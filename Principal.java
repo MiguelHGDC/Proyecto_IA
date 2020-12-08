@@ -4,16 +4,16 @@ import java.util.Scanner;
 //Aprender a la lectura de un fichero. empezando desde 0
 public class Principal {
 	
-	static ArrayList<Lugares> lugarList = new ArrayList<Lugares>();
+	static ArrayList<Lugar> lugares = new ArrayList<Lugar>();
 	
     public static void main(String args[]){ //Funcion para la lectura del fichero donde se interpretan las acciones
     	
     	
         String linetxt = "";
         String nuevalinea = "";
+        String nuevalinea2 = "";
         String[] partes;
-
-
+        String[] aux;
 
         try {
             FileInputStream fichero = new FileInputStream("C:\\Users\\mhere\\OneDrive\\Escritorio\\U-TAD\\Curso2\\Programacion orientada a objetos\\08-POO\\Trabajos\\ProyectoJava\\src\\Prueba_lectura.txt");
@@ -22,7 +22,6 @@ public class Principal {
             while(src.hasNextLine()){
                 linetxt = src.nextLine();
                 System.out.println(linetxt);
-                //System.out.println(linetxt.compareTo("</Localizaciones>"));
 
                 if(linetxt.contains("<Localizaciones>")){ //Parte del texto donde se encuentran las localizaciones.
                     while(true){ //Captura de todas las localizaciones que hay
@@ -31,34 +30,32 @@ public class Principal {
                             break;
                         }else{
                             nuevalinea = linetxt.replace("(", "-").replace(")", "").replace(",","-").trim();
-                            //System.out.println(nuevalinea);
                             
                             partes = nuevalinea.split("-");
                             
-                          //Hacer un for tipo aux donde sobrescribimos la posicion 1 a la 0 y asi sucesivamente
-                            Lugares lugar = new Lugares(partes[0],partes);
-                            lugarList.add(lugar);
-                         
+                            nuevalinea2 = linetxt.replace(partes[0],"").replace("(", "").replace(")", "").replace(",","-").trim();
+                            
+                            System.out.println("\n\n NUEVA LINEA 2 :"+nuevalinea2);
+                            aux = nuevalinea2.split("-");
 
+                            Lugar lugar = new Lugar(partes[0],aux);
+                            lugares.add(lugar);
 
                         }
                     }
                 } 
-                for(Lugares nini:lugarList) {
+                for(Lugar nini:lugares) {
         			System.out.print(nini.toString()+"\n\n");
         			System.out.println("");
         		}
                 
-               /* for(String elemento:localizaciones){
-                    System.out.println("Localizacion es: "+elemento); 
-                }*/
-
                 if(linetxt.contains("</Localizaciones>")){
                     System.out.println(linetxt);
                 }
-                
-                //System.out.println("Localizacion actual: " +localizacion );
+                //System.out.println("HOLAAAAA----->"+lugares.get(0).mostrar());
             }
+            
+            
 
             src.close(); //Cerramos el scanner al fichero.
             fichero.close(); //Cerramos el fichero.
