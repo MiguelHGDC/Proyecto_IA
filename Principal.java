@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 //Aprender a la lectura de un fichero. empezando desde 0
 public class Principal {
+	//Buenas
 	
 	static ArrayList<Lugares> lugarList = new ArrayList<Lugares>();
 	
