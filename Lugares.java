@@ -1,10 +1,11 @@
 import java.util.Arrays;
 
-public class Lugares {
+public class Lugar {
 	public String nombre;
 	public String[] adyaciencias;
 	
-	public Lugares(String nombre, String[] adyaciencias) {
+	
+	public Lugar(String nombre, String[] adyaciencias) {
 		this.nombre = nombre;
 		this.adyaciencias = adyaciencias;
 	}
@@ -24,12 +25,18 @@ public class Lugares {
 	public void setAdyaciencias(String[] adyaciencias) {
 		this.adyaciencias = adyaciencias;
 	}
-
-
+	
+	public String mostrar() {
+		return adyaciencias[1];
+	}
+	
 	@Override
 	public String toString() {
-		return "Lugares [nombre=" + nombre + ", adyaciencias=" + Arrays.toString(adyaciencias) + "]";
+		return "Lugar [nombre: " + nombre + ", adyaciencias: " + Arrays.toString(adyaciencias) + "  ]";
 	}
+
+
+	
 	
 	
 	
